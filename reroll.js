@@ -1,10 +1,6 @@
 // Initium rerolling bot
 
-// The bot will automatically hit a troll 11 times, the stats you want for a high roll alt after 11 hits are...
-// 5.07/5.03/5.01 
-
-// Occasionally you will kill the troll before the 11 hits go through, you can know if this happened if you are at the...
-// combat site after the bot finishes running. If so, just run it again.
+// The bot will automatically hit a troll 11 times, the stats you want for a high roll alt after 11 hits are: 5.07/5.03/5.01 
 
 // Enter your charecter name of choice below
 var characterName = 'Kathryne';
@@ -26,7 +22,7 @@ async function main() {
   $(document.getElementsByClassName('popup_confirm_option confirm_okay')).click();
   await sleep(5000);
   for (i = 0; i < 11; i++) {
-  	doCombatAttackLeftHand(event);
+    doCombatAttackLeftHand(event);
     await sleep(1500);
   }
 }
