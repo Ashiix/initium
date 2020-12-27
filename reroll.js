@@ -6,50 +6,29 @@
 // Occasionally you will kill the troll before the 11 hits go through, you can know if this happened if you are at the...
 // combat site after the bot finishes running. If so, just run it again.
 
-// If your ping is absolutely awful, set the following to 'true' if not, set it to 'false'
-var highPing = false
-
 // Enter your charecter name of choice below
-var charecterName = ''
+var characterName = 'Kathryne';
 
-
-
-if (highPing = true) {
-  var pingMulti = 2
+// Stolen from https://www.sitepoint.com/delay-sleep-pause-wait/
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
 }
-else {
-  var pingMulti = 1
+
+async function main() {
+  deleteAndRecreateCharacter(event, characterName);
+  $(document.getElementsByClassName('popup_confirm_option confirm_yes')).click();
+  $(document.getElementsByClassName('popup_confirm_option confirm_okay')).click();
+  await sleep(5000);
+  doGoto(event, 5707702298738688);
+  await sleep(10000);
+  createCampsite();
+  await sleep(500);
+  $(document.getElementsByClassName('popup_confirm_option confirm_okay')).click();
+  await sleep(5000);
+  for (i = 0; i < 11; i++) {
+  	doCombatAttackLeftHand(event);
+    await sleep(1500);
+  }
 }
-var attackTimes = 0
-deleteAndRecreateCharacter(event, charecterName)
-$(document.getElementsByClassName('popup_confirm_option confirm_yes')).click()
-$(document.getElementsByClassName('popup_confirm_option confirm_okay')).click()
-setTimeout(function () {
-  doGoto(event, 5707702298738688)
-  setTimeout(function () {
-    createCampsite()
-    $(document.getElementsByClassName('popup_confirm_option confirm_okay')).click()
-    setTimeout(function () {
-      doCombatAttackLeftHand(event)
-      setInterval(function () {
-        if (attackTimes < 10) {
-          doCombatAttackLeftHand(event);
-          attackTimes = attackTimes + 1
-        }
-        else {
-          clearInterval()
-          setTimeout(function () {
-            doCombatEscape(event)
-            setTimeout(function () {
-              doCombatEscape(event) 
-              setTimeout(function () {
-                doCombatEscape(event)         
-                location.reload();
-              }, 2000*pingMulti);
-            }, 2000*pingMulti);
-          }, 2000*pingMulti);
-        }
-      }, 1500*pingMulti);
-    }, 5000*pingMulti);
-  }, 10000*pingMulti);
-}, 5000*pingMulti);
+
+main();
