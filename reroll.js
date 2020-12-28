@@ -1,7 +1,7 @@
 // Initium rerolling bot
 
 // Enter your charecter name of choice below
-var characterName = 'Kathryne';
+var characterName = '';
 
 
 // Stolen from https://www.sitepoint.com/delay-sleep-pause-wait/
