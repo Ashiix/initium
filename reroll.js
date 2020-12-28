@@ -26,6 +26,10 @@ async function reroll() {
       closepopupMessage();
       await sleep(1500);
     }
+    while(document.getElementById("banner").innerHTML.match("Explore") == null && document.getElementById("loot-popup").innerHTML.match("Explore") == null) {
+      doCombatEscape();
+      await sleep(1000);
+    }
     var strength, dexterity, intelligence;
     [strength, dexterity, intelligence] = document.getElementById("newui").innerHTML.match("minitip=\"(.*)<br>")[1].split("/");
     if (strength >= 5.07 && dexterity >= 5.03 && intelligence >= 5.01) {
