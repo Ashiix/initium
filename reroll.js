@@ -26,7 +26,8 @@ async function reroll() {
       closepopupMessage();
       await sleep(1500);
     }
-    var [strength, dexterity, intelligence] = document.getElementById("newui").innerHTML.match("minitip=\"(.*)<br>")[1].split("/");
+    var strength, dexterity, intelligence;
+    [strength, dexterity, intelligence] = document.getElementById("newui").innerHTML.match("minitip=\"(.*)<br>")[1].split("/");
     if (strength >= 5.07 && dexterity >= 5.03 && intelligence >= 5.01) {
       alert("High stat roll alt found");
       break;
